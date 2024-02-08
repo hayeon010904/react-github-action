@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import styled from "styled-components";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -7,37 +8,68 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h3 data-testId="counter">{counter}</h3>
-        <button
-          data-testId="minus-button"
-          onClick={() => {
-            setCounter((prev) => prev - 1);
-          }}
-          disabled={disabled}
-        >
-          -
-        </button>
-        <button
-          data-testId="plus-button"
-          onClick={() => {
-            setCounter((prev) => prev + 1);
-          }}
-          disabled={disabled}
-        >
-          +
-        </button>
-        <button
+        <OnOffButton
           data-testId="on/off-button"
-          style={{ backgroundColor: "blue" }}
           onClick={() => {
             setDisabled((prev) => !prev);
           }}
         >
           on/off
-        </button>
+        </OnOffButton>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            width: "300px",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button
+            data-testId="minus-button"
+            onClick={() => {
+              setCounter((prev) => prev - 1);
+            }}
+            disabled={disabled}
+          >
+            -
+          </Button>
+          <h3 data-testId="counter" style={{ fontSize: "3rem" }}>
+            {counter}
+          </h3>
+          <Button
+            data-testId="plus-button"
+            onClick={() => {
+              setCounter((prev) => prev + 1);
+            }}
+            disabled={disabled}
+          >
+            +
+          </Button>
+        </div>
       </header>
     </div>
   );
 }
+const OnOffButton = styled.button`
+  width: 300px;
+  height: 50px;
+  background-color: blue;
+  color: white;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: green;
+  }
+`;
+const Button = styled.button`
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 export default App;
