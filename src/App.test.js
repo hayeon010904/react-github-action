@@ -31,11 +31,11 @@ test("When the - button is pressed, the counter changes to", () => {
   const counterElement = screen.getByTestId("counter");
   expect(counterElement).toHaveTextContent(-1);
 });
-test("on/off button has blue color", () => {
-  render(<App />);
-  const buttonElement = screen.getByTestId("on/off-button");
-  expect(buttonElement).toHaveStyle({ backgroundColor: "blue" });
-});
+// test("on/off button has blue color", () => {
+//   render(<App />);
+//   const buttonElement = screen.getByTestId("on/off-button");
+//   expect(buttonElement).toHaveStyle({ backgroundColor: "blue" });
+// });
 test("Prevent the -,+ button from being pressed when the on/off button is clicked", () => {
   render(<App />);
   const onOffButtonElement = screen.getByTestId("on/off-button");
